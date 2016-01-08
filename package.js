@@ -11,7 +11,7 @@ Package.onUse(function (api) {
   api.use([
     // standard
     'ecmascript',
-    'react',
+    'react@0.14.3',
     'underscore',
 
     // third party
