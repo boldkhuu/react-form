@@ -1,7 +1,7 @@
 Package.describe({
   name: 'teamon:react-form',
   summary: 'Form builder and validator for React',
-  version: '0.0.1',
+  version: '0.0.2',
   git: 'https://github.com/teamOnHQ/react-form.git',
 });
 
