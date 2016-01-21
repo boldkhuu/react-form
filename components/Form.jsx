@@ -14,6 +14,7 @@ RF.Form = React.createClass({
 
     // hooks
     onSubmit: React.PropTypes.func,
+    beforeSubmit: React.PropTypes.func,
   },
   componentWillMount() {
     const { id, schema, doc } = this.props;
@@ -33,8 +34,17 @@ RF.Form = React.createClass({
   _onSubmit(e) {
     e.preventDefault();
 
-    const { id, type, method, onSubmit } = this.props;
+    const { id, type, method, onSubmit, beforeSubmit } = this.props;
     const form = RF.Forms[id];
+
+    // before hook
+    if (beforeSubmit) {
+      const modified = beforeSubmit(form.doc);
+
+      if (modified) {
+        RF.Forms[id].doc = modified;
+      }
+    }
 
     let args = [];
 
