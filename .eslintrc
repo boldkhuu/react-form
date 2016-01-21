@@ -1,0 +1,51 @@
+{
+  "plugins": [
+    "react"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "meteor": true
+  },
+  "rules": {
+    "indent": [2, 2, { "SwitchCase": 1 }],
+    "quotes": [2, "single"],
+    "linebreak-style": [2, "unix"],
+    "semi": [2, "always"],
+    "no-console": 1,
+    "no-unused-vars": [2, {"vars": "local"}],
+    "strict": 0,
+    "comma-dangle": [1, "always-multiline"],
+
+    "jsx-quotes": [1, "prefer-double"],
+    "react/display-name": 0,
+    "react/jsx-boolean-value": 1,
+    "react/jsx-no-undef": 1,
+    "react/jsx-sort-prop-types": 0,
+    "react/jsx-sort-props": 0,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-multi-comp": 0,
+    "react/no-unknown-property": 1,
+    // TODO: open prop-types
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": 1,
+    "react/require-extension": 1,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 0,
+    "react/wrap-multilines": 1,
+  },
+  "extends": "eslint:recommended",
+  "globals": {
+    "React": false,
+    "ReactDOM": false,
+    "ReactMeteorData": false,
+    "AccountsClient": false,
+
+    "SimpleSchema": false,
+  }
+}
