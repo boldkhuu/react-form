@@ -1,8 +1,7 @@
-/* globals RF */
+import React from 'react';
 
-RF.Templates.Uikit = {};
 
-RF.Templates.Uikit.Form = React.createClass({
+const Form = React.createClass({
   propTypes: {
     id: React.PropTypes.string.isRequired,
     onSubmit: React.PropTypes.func.isRequired,
@@ -24,3 +23,5 @@ RF.Templates.Uikit.Form = React.createClass({
     );
   },
 });
+
+export default Form;

@@ -1,6 +1,7 @@
-/* globals ReactForm: true */
+import Element from './element';
 
-ReactForm = class ReactForm {
+
+class ReactForm {
   constructor({ id, schema, doc = {} }) {
     this.id = id;
     this.schema = schema;
@@ -145,4 +146,6 @@ ReactForm = class ReactForm {
       }
     });
   }
-};
+}
+
+export default ReactForm;

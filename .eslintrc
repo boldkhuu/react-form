@@ -40,12 +40,5 @@
     "react/wrap-multilines": 1,
   },
   "extends": "eslint:recommended",
-  "globals": {
-    "React": false,
-    "ReactDOM": false,
-    "ReactMeteorData": false,
-    "AccountsClient": false,
-
-    "SimpleSchema": false,
-  }
+  "globals": {}
 }

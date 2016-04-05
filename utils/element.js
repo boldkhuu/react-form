@@ -1,10 +1,11 @@
-/* globals Element: true */
+import React from 'react';
+
 
 /**
  * Creates field input element
  * @class
  */
-Element = class Element {
+class Element {
   /**
    * @param  {String} tag - HTML tag name ('input', 'texarea' etc.)
    * @param  {Object} attr - Tag attributes (name, value etc.)
@@ -61,4 +62,6 @@ Element = class Element {
       return React.createElement(child.tag, attr, subChildren);
     });
   }
-};
+}
+
+export default Element;

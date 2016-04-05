@@ -1,8 +1,13 @@
-/* globals RF */
+import React from 'react';
+import _ from 'underscore';
+import { Meteor } from 'meteor/meteor';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import RF from '../utils/main';
+
 
 const TYPES = { method: 'method', methodUpdate: 'method-update' };
 
-RF.Form = React.createClass({
+const Form = React.createClass({
   propTypes: {
     id: React.PropTypes.string.isRequired,
     schema: React.PropTypes.instanceOf(SimpleSchema).isRequired,
@@ -94,3 +99,4 @@ RF.Form = React.createClass({
   },
 });
 
+export default Form;

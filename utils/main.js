@@ -1,6 +1,20 @@
-/* globals RF, ReactForm */
+import ReactForm from './reactForm';
+import Form from '../template/uikit/Form.jsx';
 
-Object.assign(RF, {
+
+/**
+ * Main namespace object for ReactForm package
+ * @namespace RF
+ */
+const RF = {
+  Forms: {},
+  Templates: {
+    Uikit: { Form },
+  },
+  Config: {
+    Theme: 'uikit',
+  },
+
   /**
    * Initialize ReactForm
    * @param  {String} options.id - Form id
@@ -11,12 +25,14 @@ Object.assign(RF, {
   initForm({ id, schema, doc }) {
     const form = new ReactForm({ id, schema, doc });
 
-    RF.Forms[id] = form;
+    this.Forms[id] = form;
 
     return form;
   },
 
   getField(formId, fieldName, type, options) {
-    return RF.Forms[formId].getField(fieldName, type, options);
+    return this.Forms[formId].getField(fieldName, type, options);
   },
-});
+};
+
+export default RF;

@@ -5,35 +5,17 @@ Package.describe({
   git: 'https://github.com/teamOnHQ/react-form.git',
 });
 
+Npm.depends({
+  'underscore': '1.8.3',
+});
+
 Package.onUse(function (api) {
-  api.versionsFrom('1.2.1');
+  api.versionsFrom('1.3');
 
   api.use([
-    // standard
     'ecmascript',
-    'react@0.14.3',
-    'underscore',
-
-    // third party
-    'aldeed:simple-schema@1.3.3',
+    'aldeed:simple-schema@1.5.3',
   ]);
 
-  // client
-  api.addFiles([
-    'namespace.js',
-    'config.js',
-    'element.js',
-    'reactForm.js',
-    'utils.js',
-
-    // components
-    'components/Form.jsx',
-    'components/QuickField.jsx',
-    'components/InputField.jsx',
-
-    // template
-    'template/uikit/Form.jsx',
-  ], 'client');
-
-  api.export('RF');
+  api.mainModule('main.client.js', 'client');
 });

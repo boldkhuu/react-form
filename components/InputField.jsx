@@ -1,6 +1,9 @@
-/* globals RF */
+import React from 'react';
+import _ from 'underscore';
+import RF from '../utils/main';
 
-RF.InputField = React.createClass({
+
+const InputField = React.createClass({
   propTypes: {
     name: React.PropTypes.string.isRequired,
     type: React.PropTypes.string,
@@ -24,3 +27,5 @@ RF.InputField = React.createClass({
     return React.cloneElement(this.state.component, this.props);
   },
 });
+
+export default InputField;

@@ -1,6 +1,8 @@
-/* globals RF */
+import React from 'react';
+import RF from '../utils/main';
 
-RF.QuickField = React.createClass({
+
+const QuickField = React.createClass({
   propTypes: {
     name: React.PropTypes.string.isRequired,
   },
@@ -26,3 +28,5 @@ RF.QuickField = React.createClass({
     );
   },
 });
+
+export default QuickField;
