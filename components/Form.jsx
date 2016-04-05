@@ -84,22 +84,16 @@ class Form extends Component {
   }
 
   render() {
-    const { id, template, children, className } = this.props;
-    const attr = { id, className };
-
-    let Template;
-
-    switch(template || RF.Config.Theme) {
-      case 'uikit':
-      default: {
-        Template = RF.Templates.Uikit.Form;
-      }
-    }
+    const { id, children, className } = this.props;
 
     return (
-      <Template {...attr} onSubmit={this.onSubmit}>
+      <form
+        id={id}
+        onSubmit={this.onSubmit}
+        className={className}>
+
         {children}
-      </Template>
+      </form>
     );
   }
 }

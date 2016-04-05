@@ -23,9 +23,9 @@ class QuickField extends Component {
     const { label, component } = this.state;
 
     return (
-      <div className="uk-form-row">
-        <label className="uk-form-label">{label}</label>
-        <div className="uk-form-controls">{component}</div>
+      <div>
+        <label>{label}</label>
+        <div>{component}</div>
       </div>
     );
   }

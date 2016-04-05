@@ -1,5 +1,4 @@
 import ReactForm from './reactForm';
-import Form from '../template/uikit/Form.jsx';
 
 
 /**
@@ -8,9 +7,6 @@ import Form from '../template/uikit/Form.jsx';
  */
 const RF = {
   Forms: {},
-  Templates: {
-    Uikit: { Form },
-  },
   Config: {
     Theme: 'uikit',
   },
