@@ -1,31 +1,37 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import _ from 'underscore';
 import RF from '../utils/main';
 
 
-const InputField = React.createClass({
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    type: React.PropTypes.string,
-  },
-  contextTypes: {
-    // formId is provided from parent form component
-    formId: React.PropTypes.string,
-  },
-  getInitialState() {
-    const formId = this.context.formId;
-    const { name, type } = this.props;
+const propTypes = {
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string,
+};
+const contextTypes = {
+  // formId is provided from parent form component
+  formId: PropTypes.string,
+};
+
+class InputField extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    const { formId } = context;
+    const { name, type } = props;
 
     // omit special props
-    const options = _.omit(this.props, 'name', 'type');
+    const options = _.omit(props, 'name', 'type');
     const { component } = RF.getField(formId, name, type, options);
 
-    return { component };
-  },
+    this.state = { component };
+  }
 
   render() {
     return React.cloneElement(this.state.component, this.props);
-  },
-});
+  }
+}
+
+InputField.propTypes = propTypes;
+InputField.contextTypes = contextTypes;
 
 export default InputField;

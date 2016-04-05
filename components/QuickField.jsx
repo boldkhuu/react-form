@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import RF from '../utils/main';
 
 
-const QuickField = React.createClass({
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-  },
-  contextTypes: {
-    // formId is provided from parent form component
-    formId: React.PropTypes.string,
-  },
-  getInitialState() {
-    const field = RF.getField(this.context.formId, this.props.name);
-    const { component, label } = field;
+const propTypes = {
+  name: PropTypes.string.isRequired,
+};
+const contextTypes = {
+  // formId is provided from parent form component
+  formId: PropTypes.string,
+};
 
-    return { label, component };
-  },
+class QuickField extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    const { component, label } = RF.getField(context.formId, props.name);
+
+    this.state = { label, component };
+  }
 
   render() {
     const { label, component } = this.state;
@@ -26,7 +28,10 @@ const QuickField = React.createClass({
         <div className="uk-form-controls">{component}</div>
       </div>
     );
-  },
-});
+  }
+}
+
+QuickField.propTypes = propTypes;
+QuickField.contextTypes = contextTypes;
 
 export default QuickField;

@@ -1,42 +1,51 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 import _ from 'underscore';
 import { Meteor } from 'meteor/meteor';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import RF from '../utils/main';
 
 
-const TYPES = { method: 'method', methodUpdate: 'method-update' };
+const TYPES = {
+  method: 'method',
+  methodUpdate: 'method-update',
+};
 
-const Form = React.createClass({
-  propTypes: {
-    id: React.PropTypes.string.isRequired,
-    schema: React.PropTypes.instanceOf(SimpleSchema).isRequired,
-    type: React.PropTypes.oneOf(_.values(TYPES)),
-    method: React.PropTypes.string,
-    doc: React.PropTypes.object,
-    template: React.PropTypes.string,
-    className: React.PropTypes.string,
+const propTypes = {
+  id: PropTypes.string.isRequired,
+  schema: PropTypes.instanceOf(SimpleSchema).isRequired,
+  type: PropTypes.oneOf(_.values(TYPES)),
+  method: PropTypes.string,
+  doc: PropTypes.object,
+  template: PropTypes.string,
+  className: PropTypes.string,
 
-    // hooks
-    onSubmit: React.PropTypes.func,
-    beforeSubmit: React.PropTypes.func,
-  },
+  // hooks
+  onSubmit: PropTypes.func,
+  beforeSubmit: PropTypes.func,
+};
+const childContextTypes = {
+  formId: PropTypes.string,
+};
+
+class Form extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
   componentWillMount() {
     const { id, schema, doc } = this.props;
-
     RF.initForm({ id, schema, doc });
-  },
+  }
 
   // Uses Context here to pass formId to all child components
   // including nested children.
-  childContextTypes: {
-    formId: React.PropTypes.string,
-  },
   getChildContext() {
     return { formId: this.props.id };
-  },
+  }
 
-  _onSubmit(e) {
+  onSubmit(e) {
     e.preventDefault();
 
     const { id, type, method, onSubmit, beforeSubmit } = this.props;
@@ -72,19 +81,15 @@ const Form = React.createClass({
 
       return onSubmit(null, result);
     });
-  },
+  }
 
   render() {
     const { id, template, children, className } = this.props;
-
-    const attr = {
-      id,
-      className,
-    };
+    const attr = { id, className };
 
     let Template;
 
-    switch(template || RF.Config.theme) {
+    switch(template || RF.Config.Theme) {
       case 'uikit':
       default: {
         Template = RF.Templates.Uikit.Form;
@@ -92,11 +97,14 @@ const Form = React.createClass({
     }
 
     return (
-      <Template {...attr} onSubmit={this._onSubmit}>
+      <Template {...attr} onSubmit={this.onSubmit}>
         {children}
       </Template>
     );
-  },
-});
+  }
+}
+
+Form.propTypes = propTypes;
+Form.childContextTypes = childContextTypes;
 
 export default Form;

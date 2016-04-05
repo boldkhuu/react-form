@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
 
-const Form = React.createClass({
-  propTypes: {
-    id: React.PropTypes.string.isRequired,
-    onSubmit: React.PropTypes.func.isRequired,
-    className: React.PropTypes.string,
-  },
+const propTypes = {
+  id: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
 
+class Form extends Component {
   render() {
     const { id, children, onSubmit } = this.props;
     const className = `uk-form uk-form-stacked ${this.props.className}`;
@@ -21,7 +21,9 @@ const Form = React.createClass({
         {children}
       </form>
     );
-  },
-});
+  }
+}
+
+Form.propTypes = propTypes;
 
 export default Form;
